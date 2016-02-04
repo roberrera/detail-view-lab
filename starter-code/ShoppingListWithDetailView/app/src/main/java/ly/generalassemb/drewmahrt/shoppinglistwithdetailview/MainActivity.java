@@ -36,10 +36,11 @@ public class MainActivity extends AppCompatActivity {
         mHelper = new ShoppingSQLiteOpenHelper(MainActivity.this);
 
         final Cursor cursor = mHelper.getShoppingList();
-
+/*
+        // Already added to database, so no need to run this code again:
         ShoppingSQLiteOpenHelper helper = new ShoppingSQLiteOpenHelper(MainActivity.this);
         helper.addItem("Cheerios", "Delicious cereal (now gluten-free)", "4.99", "Cereal");
-
+*/
         mCursorAdapter = new SimpleCursorAdapter(
                 this,
                 android.R.layout.simple_list_item_1,
