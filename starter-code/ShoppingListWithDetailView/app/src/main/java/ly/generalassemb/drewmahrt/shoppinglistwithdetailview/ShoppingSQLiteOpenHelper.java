@@ -30,6 +30,7 @@ public class ShoppingSQLiteOpenHelper extends SQLiteOpenHelper{
     public static final String COL_ITEM_DESCRIPTION = "DESCRIPTION";
     public static final String COL_ITEM_TYPE = "TYPE";
 
+
     public static final String[] SHOPPING_COLUMNS = {COL_ID,COL_ITEM_NAME,COL_ITEM_DESCRIPTION,COL_ITEM_PRICE,COL_ITEM_TYPE};
 
     private static final String CREATE_SHOPPING_LIST_TABLE =
@@ -62,6 +63,9 @@ public class ShoppingSQLiteOpenHelper extends SQLiteOpenHelper{
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + SHOPPING_LIST_TABLE_NAME);
+        if (newVersion > oldVersion) {
+            db.execSQL("ALTER TABLE SHOPPING_LIST ADD COLUMN COL_ITEM_ORGANIC INTEGER DEFAULT 0");
+        }
         this.onCreate(db);
     }
 
@@ -174,6 +178,7 @@ public class ShoppingSQLiteOpenHelper extends SQLiteOpenHelper{
             return "Type not found";
         }
     }
+
 
     public int deleteItem(int id){
         SQLiteDatabase db = getWritableDatabase();

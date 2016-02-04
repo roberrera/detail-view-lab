@@ -37,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
 
         final Cursor cursor = mHelper.getShoppingList();
 
+        ShoppingSQLiteOpenHelper helper = new ShoppingSQLiteOpenHelper(MainActivity.this);
+        helper.addItem("Cheerios", "Delicious cereal (now gluten-free)", "4.99", "Cereal");
+
         mCursorAdapter = new SimpleCursorAdapter(
                 this,
                 android.R.layout.simple_list_item_1,

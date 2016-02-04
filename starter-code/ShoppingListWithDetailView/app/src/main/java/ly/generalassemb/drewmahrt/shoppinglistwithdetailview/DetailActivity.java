@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 public class DetailActivity extends AppCompatActivity {
 
-    TextView mItemName, mItemDesc, mItemPrice, mItemType;
+    TextView mItemName, mItemDesc, mItemPrice, mItemType, mItemOrganic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,10 +14,12 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         int id = getIntent().getIntExtra("id", -1);
+
         mItemName = (TextView)findViewById(R.id.item_name);
         mItemDesc = (TextView)findViewById(R.id.item_desc);
         mItemPrice = (TextView)findViewById(R.id.item_price);
         mItemType = (TextView)findViewById(R.id.item_type);
+
 
         String name = ShoppingSQLiteOpenHelper.getInstance(DetailActivity.this).getItemNameById(id);
         mItemName.setText("Item: " + name);
