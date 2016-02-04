@@ -12,7 +12,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.CursorAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
@@ -22,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private ListView mShoppingListView;
     private CursorAdapter mCursorAdapter;
     private ShoppingSQLiteOpenHelper mHelper;
+    private Button mAddButton;
+    private EditText mEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,9 +64,21 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+/*
+        // TODO: Allow user to add a new grocery item via a split string.
+        mAddButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String userInput = mEditText.getText().toString();
+                String userInputSplit[] = userInput.split(", ", 4);
+                ShoppingSQLiteOpenHelper helper = new ShoppingSQLiteOpenHelper(MainActivity.this);
+                helper.addItem(userInputSplit);
+            }
+        });
+*/
         handleIntent(getIntent());
     }
+
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
